@@ -97,11 +97,10 @@ function App() {
                   <GlassCard className="p-8" glowEffect>
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">About Me</h2>
                     <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                      I'm a passionate full-stack developer with a love for creating innovative solutions and beautiful user experiences. 
-                      My journey in tech started with curiosity and has evolved into a deep appreciation for clean code, scalable architecture, and user-centered design.
+                      I like things to be nice and neat, and love a project that speeds up my workflow. I enjoy building tools that help me stay organized and make everyday tasks easier.
                     </p>
                     <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                      When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.
+                      When I'm not coding, you'll find me immersed in exciting games like The Finals, Call of Duty, or Delta Force. These fast-paced shooters are packed with action and strategy, making every match a thrilling experience. I love how they let me unwind and forget about responsibilities for a while, offering pure fun and adrenaline.
                     </p>
                   </GlassCard>
                 </motion.div>
@@ -204,7 +203,7 @@ function App() {
                         <p className="text-purple-600 dark:text-purple-400 font-medium">Ongoing</p>
                         <p className="text-gray-700 dark:text-gray-300 mt-2">
                           Semi-active contributor to a variety of open-source projects. 
-                          Passionate about giving back to the community and collaborative development.
+                          Passionate about collaborative development and learning from the community.
                         </p>
                       </motion.div>
                     </div>
