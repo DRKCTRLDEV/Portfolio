@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md bg-glass-light dark:bg-glass-dark border border-white/20 dark:border-white/10 rounded-xl shadow-lg;
+  }
+  
+  .glass-button {
+    @apply glass-card px-4 py-2 text-sm font-medium text-gray-900 dark:text-white hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-200 cursor-pointer;
+  }
+  
+  .glow-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .glow-effect::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(59, 130, 246, 0.15), transparent 50%);
+  }
+  
+  .glow-effect:hover::before {
+    @apply opacity-100;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/20 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/30;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-gray-600/40;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600/60;
+}
+
+/* Gradient Background Animations */
+:root {
+  --color-bg1: rgb(248, 250, 252);
+  --color-bg2: rgb(241, 245, 249);
+  --color1: 139, 92, 246;
+  --color2: 236, 72, 153;
+  --color3: 251, 191, 36;
+  --color4: 34, 197, 94;
+  --color5: 99, 102, 241;
+  --color-interactive: 168, 85, 247;
+  --circle-size: 80%;
+  --blending: overlay;
+}
+
+.dark {
+  --color-bg1: rgb(15, 23, 42);
+  --color-bg2: rgb(30, 41, 59);
+  --color1: 139, 92, 246;
+  --color2: 236, 72, 153;
+  --color3: 251, 191, 36;
+  --color4: 34, 197, 94;
+  --color5: 99, 102, 241;
+  --color-interactive: 168, 85, 247;
+  --blending: soft-light;
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+.gradient-bg {
+  @apply fixed inset-0 w-full h-full overflow-hidden;
+  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+  z-index: -1;
+}
+
+.gradients-container {
+  filter: url(#goo) blur(60px);
+  @apply w-full h-full;
+}
+
+.gradient-orb {
+  @apply absolute;
+  mix-blend-mode: var(--blending);
+  width: var(--circle-size);
+  height: var(--circle-size);
+}
+
+.g1 {
+  background: radial-gradient(circle at center, rgba(var(--color1), 0.5) 0, rgba(var(--color1), 0) 50%) no-repeat;
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+  transform-origin: center center;
+  animation: moveVertical 30s ease infinite;
+}
+
+.g2 {
+  background: radial-gradient(circle at center, rgba(var(--color2), 0.4) 0, rgba(var(--color2), 0) 50%) no-repeat;
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+  transform-origin: calc(50% - 500px);
+  animation: moveInCircle 20s reverse infinite;
+}
+
+.g3 {
+  background: radial-gradient(circle at center, rgba(var(--color3), 0.4) 0, rgba(var(--color3), 0) 50%) no-repeat;
+  top: calc(50% - var(--circle-size) / 2 + 300px);
+  left: calc(50% - var(--circle-size) / 2 - 600px);
+  transform-origin: calc(50% + 500px);
+  animation: moveInCircle 40s linear infinite;
+}
+
+.g4 {
+  background: radial-gradient(circle at center, rgba(var(--color4), 0.35) 0, rgba(var(--color4), 0) 50%) no-repeat;
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+  transform-origin: calc(50% - 300px);
+  animation: moveHorizontal 40s ease infinite;
+}
+
+.g5 {
+  background: radial-gradient(circle at center, rgba(var(--color5), 0.4) 0, rgba(var(--color5), 0) 50%) no-repeat;
+  width: calc(var(--circle-size) * 2);
+  height: calc(var(--circle-size) * 2);
+  top: calc(50% - var(--circle-size));
+  left: calc(50% - var(--circle-size));
+  transform-origin: calc(50% - 900px) calc(50% + 300px);
+  animation: moveInCircle 20s ease infinite;
+}
+
+.interactive {
+  background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.25) 0, rgba(var(--color-interactive), 0.15) 30%, rgba(var(--color-interactive), 0) 70%) no-repeat;
+  @apply w-full h-full;
+  top: -30%;
+  right: -50%;
+}
+
+.interactive2 {
+  background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.25) 0, rgba(var(--color-interactive), 0.15) 30%, rgba(var(--color-interactive), 0) 70%) no-repeat;
+  @apply w-full h-full;
+  bottom: -30%;
+  left: -40%;
+}

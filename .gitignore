@@ -1,0 +1,303 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log.*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+.nyc_output
+
+# Dependency directories
+node_modules/
+jspm_packages/
+bower_components/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnpm-store/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Prettier cache
+.prettier-cache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Environment variables and secrets
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.environment
+.secrets
+config.json
+secrets.json
+
+# API keys and tokens
+.apikeys
+.tokens
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+out/
+*.local
+
+# Bundler and build tool outputs
+.parcel-cache
+.cache/
+.rpt2_cache/
+.rollup.cache/
+.webpack/
+.vite/
+
+# Testing
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+test-results.xml
+*.spec.js.snap
+*.test.js.snap
+
+# Storybook
+.storybook-out
+storybook-static
+.out
+
+# Documentation
+docs/build/
+.docusaurus/
+
+# Temporary folders and files
+tmp/
+temp/
+*.tmp
+*.temp
+.temp/
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+
+# Code editors
+.history/
+.metals/
+.bloop/
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+.netrwhist
+*~
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Cloud storage
+.dropbox
+.dropbox.attr
+.dropbox.cache
+.sync/
+.syncignore
+.cloud/
+
+# Git
+.git/
+*.orig
+*.rej
+.gitattributes.bak
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+*~.nib
+*.swp
+*.tmp
+
+# Archive files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Security and credentials
+.htpasswd
+.htaccess
+.ftppass
+.credentials
+.ssh/
+id_rsa
+id_dsa
+known_hosts
+authorized_keys
+
+# Deployment and CI/CD
+.deployment
+.vercel
+.netlify/
+.serverless/
+.firebase/
+.github/
+!.github/workflows/
+.gitlab-ci.yml.bak
+
+# Monitoring and analytics
+.sentry/
+newrelic.js
+
+# Misc development files
+.eslintcache
+.stylelintcache
+.prettier-cache
+.swc/
+.next/
+.nuxt/
+.output/
+.turbo/

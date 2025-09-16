@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://drkctrl.pages.dev/sitemap.xml
+
+# Security - Disallow access to sensitive paths
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /src/
+Disallow: /.vscode/
+Disallow: /dist/
+Disallow: /build/
+
+# Performance - Allow caching of assets
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.svg
+Allow: /*.woff2
+
+# Crawl delay to be respectful
+Crawl-delay: 1

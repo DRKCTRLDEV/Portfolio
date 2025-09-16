@@ -1,0 +1,37 @@
+{
+  "name": "drkctrldev-portfolio",
+  "version": "1.0.0",
+  "description": "Interactive glassmorphic portfolio with games and utilities",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "typescript",
+    "glassmorphism",
+    "games"
+  ],
+  "author": "drkctrldev",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^24.5.0",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "autoprefixer": "^10.4.16",
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.544.0",
+    "postcss": "^8.4.35",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  }
+}
