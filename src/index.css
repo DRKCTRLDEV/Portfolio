@@ -9,6 +9,12 @@
   
   body {
     @apply transition-colors duration-300;
+    /* Ensure gradient background variables are available immediately */
+    background: linear-gradient(40deg, rgb(248, 250, 252), rgb(241, 245, 249));
+  }
+  
+  body.dark {
+    background: linear-gradient(40deg, rgb(15, 23, 42), rgb(30, 41, 59));
   }
 }
 
@@ -76,6 +82,7 @@
   --blending: overlay;
 }
 
+html.dark,
 .dark {
   --color-bg1: rgb(15, 23, 42);
   --color-bg2: rgb(30, 41, 59);
@@ -126,7 +133,7 @@
 
 .gradient-bg {
   @apply fixed inset-0 w-full h-full overflow-hidden;
-  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+  background: linear-gradient(40deg, var(--color-bg1, rgb(248, 250, 252)), var(--color-bg2, rgb(241, 245, 249)));
   z-index: -1;
 }
 
@@ -143,7 +150,7 @@
 }
 
 .g1 {
-  background: radial-gradient(circle at center, rgba(var(--color1), 0.5) 0, rgba(var(--color1), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color1, 139, 92, 246), 0.5) 0, rgba(var(--color1, 139, 92, 246), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
   transform-origin: center center;
@@ -151,7 +158,7 @@
 }
 
 .g2 {
-  background: radial-gradient(circle at center, rgba(var(--color2), 0.4) 0, rgba(var(--color2), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color2, 236, 72, 153), 0.4) 0, rgba(var(--color2, 236, 72, 153), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
   transform-origin: calc(50% - 500px);
@@ -159,7 +166,7 @@
 }
 
 .g3 {
-  background: radial-gradient(circle at center, rgba(var(--color3), 0.4) 0, rgba(var(--color3), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color3, 251, 191, 36), 0.4) 0, rgba(var(--color3, 251, 191, 36), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2 + 300px);
   left: calc(50% - var(--circle-size) / 2 - 600px);
   transform-origin: calc(50% + 500px);
@@ -167,7 +174,7 @@
 }
 
 .g4 {
-  background: radial-gradient(circle at center, rgba(var(--color4), 0.35) 0, rgba(var(--color4), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color4, 34, 197, 94), 0.35) 0, rgba(var(--color4, 34, 197, 94), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
   transform-origin: calc(50% - 300px);
@@ -175,7 +182,7 @@
 }
 
 .g5 {
-  background: radial-gradient(circle at center, rgba(var(--color5), 0.4) 0, rgba(var(--color5), 0) 50%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color5, 99, 102, 241), 0.4) 0, rgba(var(--color5, 99, 102, 241), 0) 50%) no-repeat;
   width: calc(var(--circle-size) * 2);
   height: calc(var(--circle-size) * 2);
   top: calc(50% - var(--circle-size));
@@ -185,14 +192,14 @@
 }
 
 .interactive {
-  background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.25) 0, rgba(var(--color-interactive), 0.15) 30%, rgba(var(--color-interactive), 0) 70%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color-interactive, 168, 85, 247), 0.25) 0, rgba(var(--color-interactive, 168, 85, 247), 0.15) 30%, rgba(var(--color-interactive, 168, 85, 247), 0) 70%) no-repeat;
   @apply w-full h-full;
   top: -30%;
   right: -50%;
 }
 
 .interactive2 {
-  background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.25) 0, rgba(var(--color-interactive), 0.15) 30%, rgba(var(--color-interactive), 0) 70%) no-repeat;
+  background: radial-gradient(circle at center, rgba(var(--color-interactive, 168, 85, 247), 0.25) 0, rgba(var(--color-interactive, 168, 85, 247), 0.15) 30%, rgba(var(--color-interactive, 168, 85, 247), 0) 70%) no-repeat;
   @apply w-full h-full;
   bottom: -30%;
   left: -40%;

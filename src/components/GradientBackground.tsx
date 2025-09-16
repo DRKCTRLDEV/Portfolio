@@ -1,10 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export const GradientBackground = () => {
   const interactiveRef = useRef<HTMLDivElement>(null)
   const interactive2Ref = useRef<HTMLDivElement>(null)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
+    // Ensure the component is fully loaded before starting animations
+    setIsLoaded(true)
+    
     const interactive = interactiveRef.current
     const interactive2 = interactive2Ref.current
     if (!interactive || !interactive2) return
@@ -42,16 +46,20 @@ export const GradientBackground = () => {
       tgY = (event.clientY - window.innerHeight / 2) * 0.3 // Only 30% of actual movement
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    move()
+    // Start animation with a small delay to ensure CSS is loaded
+    const timeoutId = setTimeout(() => {
+      window.addEventListener('mousemove', handleMouseMove)
+      move()
+    }, 100)
 
     return () => {
+      clearTimeout(timeoutId)
       window.removeEventListener('mousemove', handleMouseMove)
     }
   }, [])
 
   return (
-    <div className="gradient-bg">
+    <div className="gradient-bg" style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in-out' }}>
       <svg xmlns="http://www.w3.org/2000/svg" className="fixed top-0 left-0 w-0 h-0">
         <defs>
           <filter id="goo" x="-50%" y="-50%" width="200%" height="200%">
