@@ -52,9 +52,9 @@ function App() {
             <DraggableWindow
               isOpen={konamiActivated}
               onClose={() => setKonamiActivated(false)}
-              title="Konami Code"
+              title="Konami Launcher"
               initialPosition={{ x: "50vw", y: "50vh" }}
-              initialSize={{ width: "25vw", height: "35vh" }}
+              initialSize={{ width: "300px", height: "400px" }}
               minSize={{ width: "300px", height: "400px" }}
               maxSize={{ width: "75vw", height: "60vh" }}
               resizable={true}
