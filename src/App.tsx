@@ -9,6 +9,7 @@ import { DetailsSection } from '@/components/DetailsSection'
 import { DraggableWindow } from '@/components/DraggableWindow'
 import { GitHubStats } from '@/types'
 import { fetchGitHubRepos, calculateGitHubStats } from '@/utils/github'
+import { GlassButton } from '@/components/GlassComponents'
 
 function App() {
   const [showDetails, setShowDetails] = useState(false)
@@ -54,27 +55,38 @@ function App() {
               onClose={() => setKonamiActivated(false)}
               title="Konami Launcher"
               initialPosition={{ x: "50vw", y: "50vh" }}
-              initialSize={{ width: "300px", height: "400px" }}
-              minSize={{ width: "300px", height: "400px" }}
+              initialSize={{ width: "400px", height: "500px" }}
+              minSize={{ width: "320px", height: "400px" }}
               maxSize={{ width: "75vw", height: "60vh" }}
               resizable={true}
               showControls={true}
             >
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  🎮 Secret Unlocked!
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  You found the classic Konami Code!
-                </p>
-                <div className="bg-gray-100 dark:bg-gray-800/50 rounded-lg p-3 mb-4">
-                  <code className="text-sm font-mono text-gray-800 dark:text-gray-200">
-                    ↑↑↓↓←→←→BA↵
-                  </code>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  This window is draggable and resizable! Try the traffic light controls too.
-                </p>
+              {/* UI Note */}
+              <div className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
+          This is simply a placeholder for the Konami Code Easter Egg window.
+              </div>
+              {/* Dynamic Glassy Grid of Buttons */}
+              <div
+          className="grid gap-4"
+          style={{
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          }}
+              >
+          {[
+            { label: 'Start Game', icon: '🎲' },
+            { label: 'Leaderboard', icon: '🏆' },
+            { label: 'Settings', icon: '⚙️' },
+            { label: 'Help', icon: '❓' },
+            { label: 'About', icon: 'ℹ️' },
+          ].map((btn) => (
+            <GlassButton
+              key={btn.label}
+              className="flex flex-col items-center justify-center h-32"
+            >
+              <span className="text-3xl mb-2">{btn.icon}</span>
+              <span className="font-semibold text-gray-800 dark:text-gray-100">{btn.label}</span>
+            </GlassButton>
+          ))}
               </div>
             </DraggableWindow>
           )}
