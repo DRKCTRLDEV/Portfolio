@@ -40,7 +40,6 @@
   .glow-effect:hover::before {
     @apply opacity-100;
   }
-}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -66,6 +65,7 @@
 
 .dark ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-600/60;
+}
 }
 
 /* Gradient Background Animations */
