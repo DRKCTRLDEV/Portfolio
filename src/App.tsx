@@ -1,52 +1,52 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
-import { ThemeProvider } from '@/hooks/useTheme'
-import { useKonamiCode } from '@/hooks/useKonamiCode'
-import { GradientBackground } from '@/components/GradientBackground'
-import { GitHubSection } from '@/components/GitHubSection'
-import { DetailsSection } from '@/components/DetailsSection'
-import { DraggableWindow } from '@/components/DraggableWindow'
-import { GitHubStats } from '@/types'
-import { fetchGitHubRepos, calculateGitHubStats } from '@/utils/github'
-import { GlassButton } from '@/components/GlassComponents'
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { ThemeProvider } from "@/hooks/useTheme";
+import { useKonamiCode } from "@/hooks/useKonamiCode";
+import { GradientBackground } from "@/components/GradientBackground";
+import { GitHubSection } from "@/components/GitHubSection";
+import { DetailsSection } from "@/components/DetailsSection";
+import { DraggableWindow } from "@/components/DraggableWindow";
+import { GitHubStats } from "@/types";
+import { fetchGitHubRepos, calculateGitHubStats } from "@/utils/github";
+import { GlassButton } from "@/components/GlassComponents";
 
 function App() {
-  const [showDetails, setShowDetails] = useState(false)
-  const [stats, setStats] = useState<GitHubStats | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [konamiActivated, setKonamiActivated] = useState(false)
+  const [showDetails, setShowDetails] = useState(false);
+  const [stats, setStats] = useState<GitHubStats | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [konamiActivated, setKonamiActivated] = useState(false);
 
   // Konami Code Easter Egg
   useKonamiCode(() => {
-    setKonamiActivated(true)
-  })
+    setKonamiActivated(true);
+  });
 
   useEffect(() => {
     const loadGitHubData = async () => {
       try {
-        setLoading(true)
-        const reposData = await fetchGitHubRepos()
-        setStats(calculateGitHubStats(reposData))
+        setLoading(true);
+        const reposData = await fetchGitHubRepos();
+        setStats(calculateGitHubStats(reposData));
       } catch (error) {
-        console.error('Error loading GitHub data:', error)
+        console.error("Error loading GitHub data:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    loadGitHubData()
-  }, [])
+    loadGitHubData();
+  }, []);
 
   const handleShowDetails = () => {
-    setShowDetails(true)
-  }
+    setShowDetails(true);
+  };
 
   return (
     <ThemeProvider>
       <div className="min-h-screen relative">
         <GradientBackground />
-        
+
         {/* Konami Code Easter Egg Window */}
         <AnimatePresence>
           {konamiActivated && (
@@ -63,40 +63,43 @@ function App() {
             >
               {/* UI Note */}
               <div className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
-          This is simply a placeholder for the Konami Code Easter Egg window.
+                This is simply a placeholder for the Konami Code Easter Egg
+                window.
               </div>
               {/* Dynamic Glassy Grid of Buttons */}
               <div
-          className="grid gap-4"
-          style={{
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          }}
+                className="grid gap-4"
+                style={{
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                }}
               >
-          {[
-            { label: 'Start Game', icon: '🎲' },
-            { label: 'Leaderboard', icon: '🏆' },
-            { label: 'Settings', icon: '⚙️' },
-            { label: 'Help', icon: '❓' },
-            { label: 'About', icon: 'ℹ️' },
-          ].map((btn) => (
-            <GlassButton
-              key={btn.label}
-              className="flex flex-col items-center justify-center h-32"
-            >
-              <span className="text-3xl mb-2">{btn.icon}</span>
-              <span className="font-semibold text-gray-800 dark:text-gray-100">{btn.label}</span>
-            </GlassButton>
-          ))}
+                {[
+                  { label: "Start Game", icon: "🎲" },
+                  { label: "Leaderboard", icon: "🏆" },
+                  { label: "Settings", icon: "⚙️" },
+                  { label: "Help", icon: "❓" },
+                  { label: "About", icon: "ℹ️" },
+                ].map((btn) => (
+                  <GlassButton
+                    key={btn.label}
+                    className="flex flex-col items-center justify-center h-32"
+                  >
+                    <span className="text-3xl mb-2">{btn.icon}</span>
+                    <span className="font-semibold text-gray-800 dark:text-gray-100">
+                      {btn.label}
+                    </span>
+                  </GlassButton>
+                ))}
               </div>
             </DraggableWindow>
           )}
         </AnimatePresence>
-        
+
         {/* Main Content */}
         <main className="relative z-10 container mx-auto px-4 py-20 max-w-6xl">
           {/* GitHub Section */}
           <GitHubSection />
-          
+
           {/* More Details Button */}
           <AnimatePresence>
             {!showDetails && (
@@ -121,14 +124,12 @@ function App() {
 
           {/* Detailed About Section */}
           <AnimatePresence>
-            {showDetails && (
-              <DetailsSection stats={stats} loading={loading} />
-            )}
+            {showDetails && <DetailsSection stats={stats} loading={loading} />}
           </AnimatePresence>
         </main>
       </div>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

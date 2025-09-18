@@ -1,51 +1,66 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Users, Star, GitBranch, Calendar, MapPin, Globe, Building } from 'lucide-react'
-import { GlassCard } from '@/components/GlassComponents'
-import { GitHubUser, GitHubRepo, GitHubStats } from '@/types'
-import { fetchGitHubUser, fetchGitHubRepos, calculateGitHubStats, getTopLanguages } from '@/utils/github'
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  Users,
+  Star,
+  GitBranch,
+  Calendar,
+  MapPin,
+  Globe,
+  Building,
+} from "lucide-react";
+import { GlassCard } from "@/components/GlassComponents";
+import { GitHubUser, GitHubRepo, GitHubStats } from "@/types";
+import {
+  fetchGitHubUser,
+  fetchGitHubRepos,
+  calculateGitHubStats,
+  getTopLanguages,
+} from "@/utils/github";
 
 export const GitHubSection = () => {
-  const [user, setUser] = useState<GitHubUser | null>(null)
-  const [repos, setRepos] = useState<GitHubRepo[]>([])
-  const [stats, setStats] = useState<GitHubStats | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [user, setUser] = useState<GitHubUser | null>(null);
+  const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [stats, setStats] = useState<GitHubStats | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadGitHubData = async () => {
       try {
-        setLoading(true)
-        setError(null)
+        setLoading(true);
+        setError(null);
         const [userData, reposData] = await Promise.all([
           fetchGitHubUser(),
-          fetchGitHubRepos()
-        ])
-        
-        setUser(userData)
-        setRepos(reposData)
-        setStats(calculateGitHubStats(reposData))
-      } catch (err) {
-        console.error('Error loading GitHub data:', err)
-        setError(err instanceof Error ? err.message : 'Failed to load GitHub data')
-      } finally {
-        setLoading(false)
-      }
-    }
+          fetchGitHubRepos(),
+        ]);
 
-    loadGitHubData()
-  }, [])
+        setUser(userData);
+        setRepos(reposData);
+        setStats(calculateGitHubStats(reposData));
+      } catch (err) {
+        console.error("Error loading GitHub data:", err);
+        setError(
+          err instanceof Error ? err.message : "Failed to load GitHub data"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadGitHubData();
+  }, []);
 
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full"
         />
       </div>
-    )
+    );
   }
 
   // Don't show error if we have fallback data
@@ -55,16 +70,14 @@ export const GitHubSection = () => {
         <p className="text-yellow-500 dark:text-yellow-400 mb-2">
           Using demo data - GitHub API temporarily unavailable
         </p>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          {error}
-        </p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">{error}</p>
       </GlassCard>
-    )
+    );
   }
 
-  if (!user || !stats) return null
+  if (!user || !stats) return null;
 
-  const topLanguages = getTopLanguages(stats.languages)
+  const topLanguages = getTopLanguages(stats.languages);
 
   return (
     <motion.section
@@ -82,7 +95,7 @@ export const GitHubSection = () => {
             className="w-36 h-36 rounded-full border-4 border-white/20 shadow-lg"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
           />
           <div className="flex-1 text-center md:text-left">
             <motion.h1
@@ -169,7 +182,7 @@ export const GitHubSection = () => {
             </p>
           </div>
         </GlassCard>
-        
+
         <GlassCard className="p-6 text-center group" glowEffect>
           <div className="flex flex-col items-center justify-center h-full min-h-[120px]">
             <div className="flex flex-col items-center space-y-3 translate-y-3 group-hover:translate-y-1 transition-transform duration-300">
@@ -188,7 +201,7 @@ export const GitHubSection = () => {
             </p>
           </div>
         </GlassCard>
-        
+
         <GlassCard className="p-6 text-center group" glowEffect>
           <div className="flex flex-col items-center justify-center h-full min-h-[120px]">
             <div className="flex flex-col items-center space-y-3 translate-y-3 group-hover:translate-y-1 transition-transform duration-300">
@@ -207,7 +220,7 @@ export const GitHubSection = () => {
             </p>
           </div>
         </GlassCard>
-        
+
         <GlassCard className="p-6 text-center group" glowEffect>
           <div className="flex flex-col items-center justify-center h-full min-h-[120px]">
             <div className="flex flex-col items-center space-y-3 translate-y-3 group-hover:translate-y-1 transition-transform duration-300">
@@ -242,13 +255,17 @@ export const GitHubSection = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <span className="text-gray-700 dark:text-gray-300">{language}</span>
+              <span className="text-gray-700 dark:text-gray-300">
+                {language}
+              </span>
               <div className="flex items-center gap-2">
                 <div className="w-32 md:w-48 lg:w-56 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                   <motion.div
                     className="bg-blue-500 h-2 rounded-full"
                     initial={{ width: 0 }}
-                    animate={{ width: `${(count / topLanguages[0].count) * 100}%` }}
+                    animate={{
+                      width: `${(count / topLanguages[0].count) * 100}%`,
+                    }}
                     transition={{ delay: index * 0.1 + 0.3, duration: 0.8 }}
                   />
                 </div>
@@ -312,5 +329,5 @@ export const GitHubSection = () => {
         </div>
       </GlassCard>
     </motion.section>
-  )
-}
+  );
+};
